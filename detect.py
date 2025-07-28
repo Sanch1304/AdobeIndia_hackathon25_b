@@ -13,7 +13,7 @@ from datetime import datetime
 from llama_cpp import Llama
 
 # === CONFIG ===
-PDF_FOLDER = "input"
+PDF_FOLDER = "inputs"
 IMAGE_DIR = "data/images"
 OUTPUT_DIR = "processing_data"
 OUT_DIR = "app2/output"
