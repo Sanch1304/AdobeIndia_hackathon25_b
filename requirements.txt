@@ -1,0 +1,9 @@
+PyMuPDF
+
+numpy
+onnxruntime==1.19.2
+onnxruntime_gpu==1.18.0
+opencv_python
+opencv_python_headless
+llama-cpp-python
+numpy>=1.24,<1.27
