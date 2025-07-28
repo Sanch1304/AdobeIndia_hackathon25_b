@@ -226,7 +226,7 @@ EXTRACTED_JSON_PATH = "app2/output/phase1_output.json"
 OUTPUT_JSON_PATH = "app2/output/challenge1b_output.json"
 MODEL_DIR = "models"
 
-GGUF_MODEL_PATH = "models/TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf"
+GGUF_MODEL_PATH = "https://drive.google.com/file/d/1N5KrdeHA7rcJBN-qnhES17ylUUdjltOm/view?usp=sharing"
 MODEL_DIR = "models"
 
 PERSONA = "tourist"
