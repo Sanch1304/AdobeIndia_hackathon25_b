@@ -223,9 +223,9 @@ print(f"\n✅ All results saved in: {json_output_path}")
 
 # === Step 1: Paths ===
 EXTRACTED_JSON_PATH = "app2/output/phase1_output.json"
-OUTPUT_JSON_PATH = "app2/output/challenge1b_output.json"
+OUTPUT_JSON_PATH = "Collection 1/challenge1b_output.json"
 
-CHALLENGE_JSON_PATH = "Collection 1/PDFs/challenge1b_input.json
+CHALLENGE_JSON_PATH = "Collection 1/challenge1b_input.json"
 
 from model_loader import download_model
 from llama_cpp import Llama
