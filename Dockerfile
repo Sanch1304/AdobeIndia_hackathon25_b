@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /app2
+WORKDIR /workforce
 
 # Copy files into the container
 COPY . .
