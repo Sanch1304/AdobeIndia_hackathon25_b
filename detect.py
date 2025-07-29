@@ -224,11 +224,13 @@ print(f"\n✅ All results saved in: {json_output_path}")
 # === Step 1: Paths ===
 EXTRACTED_JSON_PATH = "app2/output/phase1_output.json"
 OUTPUT_JSON_PATH = "app2/output/challenge1b_output.json"
-MODEL_DIR = "models"
+
 CHALLENGE_JSON_PATH = "Collection 1/PDFs/challenge1b_input.json
 
-GGUF_MODEL_PATH = "https://drive.google.com/file/d/1N5KrdeHA7rcJBN-qnhES17ylUUdjltOm/view?usp=sharing"
-MODEL_DIR = "models"
+from model_loader import download_model
+from llama_cpp import Llama
+
+GGUF_MODEL_PATH = download_model()
 
 with open(CHALLENGE_JSON_PATH, "r", encoding="utf-8") as f:
     metadata = json.load(f)
@@ -240,16 +242,8 @@ JOB_TO_BE_DONE = challenge_info.get("job", "unknown task")
 print("✅ Persona:", PERSONA)
 print("✅ Job to be done:", JOB_TO_BE_DONE)
 # === Step 2: Download model ===
-def download_model():
-    os.makedirs(MODEL_DIR, exist_ok=True)
-    if not os.path.exists(GGUF_MODEL_PATH):
-        raise FileNotFoundError(f"❌ Model file not found at {GGUF_MODEL_PATH}. Please mount it into Docker.")
-    else:
-        print("✅ Model already exists:", GGUF_MODEL_PATH)
-
-# === Step 3: Load model ===
 def load_model():
-    print("🤖 Loading TinyLlama model...")
+    print("🤖 Loading quantized TinyLlama model from:", GGUF_MODEL_PATH)
     return Llama(model_path=GGUF_MODEL_PATH, n_ctx=2048)
 
 # === Step 4: Prompt creator ===
