@@ -13,11 +13,11 @@ from datetime import datetime
 from llama_cpp import Llama
 
 # === CONFIG ===
-PDF_FOLDER = "inputs"
+PDF_FOLDER = "Collection 1/PDFs"
 IMAGE_DIR = "data/images"
 OUTPUT_DIR = "processing_data"
 OUT_DIR = "app2/output"
-ONNX_PATH = "models/yolov10n_best.onnx"
+ONNX_PATH = "app2/models/yolov10n_best.onnx"
 DPI = 100
 CONF_THRESH = 0.25
 IOU_THRESH = 0.50
