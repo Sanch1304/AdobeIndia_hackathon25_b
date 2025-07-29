@@ -225,13 +225,20 @@ print(f"\n✅ All results saved in: {json_output_path}")
 EXTRACTED_JSON_PATH = "app2/output/phase1_output.json"
 OUTPUT_JSON_PATH = "app2/output/challenge1b_output.json"
 MODEL_DIR = "models"
+CHALLENGE_JSON_PATH = "Collection 1/PDFs/challenge1b_input.json
 
 GGUF_MODEL_PATH = "https://drive.google.com/file/d/1N5KrdeHA7rcJBN-qnhES17ylUUdjltOm/view?usp=sharing"
 MODEL_DIR = "models"
 
-PERSONA = "tourist"
-JOB_TO_BE_DONE = "trip planning"
+with open(CHALLENGE_JSON_PATH, "r", encoding="utf-8") as f:
+    metadata = json.load(f)
 
+challenge_info = metadata.get("challenge_info", {})
+PERSONA = challenge_info.get("persona", "unknown persona")
+JOB_TO_BE_DONE = challenge_info.get("job", "unknown task")
+
+print("✅ Persona:", PERSONA)
+print("✅ Job to be done:", JOB_TO_BE_DONE)
 # === Step 2: Download model ===
 def download_model():
     os.makedirs(MODEL_DIR, exist_ok=True)
