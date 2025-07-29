@@ -16,7 +16,7 @@ This is the solution for Challenge 1b of the Adobe India Hackathon 2025. The tas
 ### 🔧 Build Command
 
 ```bash
-docker run --rm -v D:/adobe/challenge_1b/input:/app2/input -v D:/adobe/challenge_1b/output:/app2/output -v D:/adobe/challenge_1b/models:/app2/models challenge1b
+docker build -t adobe_phase1b .
 
 ```
 
@@ -46,13 +46,18 @@ docker run --rm -v D:/adobe/challenge_1b/input:/app2/input -v D:/adobe/challenge
 
 ## 📂 Directory Structure
 
-challenge_1b/
-├── input/               # Input PDFs (read-only)
-├── output/              # Final output JSON file
-├── detect.py            # Main processing script
-├── Dockerfile           # Docker container definition
-├── models/              # Quantized TinyLlama GGUF model
-└── README.md            # This documentation file
+├── Dockerfile
+├── detect.py
+├── requirements.txt
+├── model_loader.py
+├── app2/
+│   └── models/
+│       └── yolov7_model.onnx
+├── Collection 1/
+│   ├── PDFs/
+│   │   └── *.pdf
+│   └── challenge1b_output.json
+
 
 ## 🧬 Solution Pipeline
 
@@ -102,11 +107,7 @@ challenge_1b/
 ## 🔍 Test Command
 
 ```bash
-docker run --rm \
-  -v $(pwd)/input:/app2/input \
-  -v $(pwd)/output:/app2/output \
-  --network none \
-  sectionextractor:latest
+docker run --rm -v "$(pwd)/Collection 1":/workforce/"Collection 1" adobe_phase1b
 ```
 ##  Validation Checklist
  * All PDFs in /input are processed
