@@ -1,5 +1,5 @@
 PyMuPDF
-
+gdown
 numpy
 onnxruntime==1.19.2
 onnxruntime_gpu==1.18.0
