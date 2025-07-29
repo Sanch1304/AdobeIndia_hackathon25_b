@@ -1,19 +1,24 @@
 import os
-import gdown  # install with: pip install gdown
-import torch  # or tensorflow, etc.
+import gdown  # pip install gdown
 
-MODEL_ID = ''
-MODEL_FILENAME = 'm'  # or .pt, .h5, etc.
+# === Constants ===
+MODEL_ID = "1N5KrdeHA7rcJBN-qnhES17ylUUdjltOm"  # From your shared Drive link
+MODEL_DIR = "models"  # This is your local folder to save the model
+MODEL_FILENAME = "TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf"
+MODEL_PATH = os.path.join(MODEL_DIR, MODEL_FILENAME)
 
 def download_model():
-    if not os.path.exists(MODEL_FILENAME):
-        print("Model not found locally. Downloading from Google Drive...")
-        gdown.download(id=MODEL_ID, output=MODEL_FILENAME, quiet=False)
+    os.makedirs(MODEL_DIR, exist_ok=True)
+    
+    if not os.path.exists(MODEL_PATH):
+        print(f"⬇️ Downloading model to {MODEL_PATH} from Google Drive...")
+        gdown.download(id=MODEL_ID, output=MODEL_PATH, quiet=False)
+        print("✅ Model downloaded successfully.")
     else:
-        print("Model already exists locally.")
+        print("✅ Model already exists locally:", MODEL_PATH)
 
-def load_model():
-    download_model()
-    model = torch.load(MODEL_FILENAME, map_location=torch.device('cpu'))  # or custom loader
-    model.eval()
-    return model
+    return MODEL_PATH  # Return absolute path for llama-cpp
+
+if __name__ == "__main__":
+    model_path = download_model()
+    print("📦 Model ready at:", model_path)
